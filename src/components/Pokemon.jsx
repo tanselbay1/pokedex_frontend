@@ -21,7 +21,7 @@ const POKEMON_TYPE_COLORS = {
     fairy: '#d685ad',
 };
 
-function App() {
+function Pokemon() {
     const [pokemon, setPokemon] = useState([]);
 
     useEffect(() => {
@@ -74,4 +74,4 @@ function App() {
     );
 }
 
-export default App;
+export default Pokemon;
