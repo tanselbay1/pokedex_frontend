@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 const POKEMON_TYPE_COLORS = {
   normal: "#a8a77a",
@@ -68,6 +69,7 @@ function Pokemon() {
           </div>
         ))}
       </div>
+      <Footer />
     </>
   );
 }
