@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
@@ -22,7 +24,7 @@ export default function Footer() {
             Kai
           </a>
         </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm font-medium no-underline text-gray-500 dark:text-gray-400 sm:mt-0">
+        <ul className="flex flex-wrap items-center mt-3 justify-center text-sm font-medium no-underline text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
             <a
               href="#"
@@ -33,12 +35,12 @@ export default function Footer() {
             </a>
           </li>
           <li>
-            <a
-              href="/"
+            <Link
+              to="/"
               className="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-gray-400"
             >
               Back to Pokedex
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
