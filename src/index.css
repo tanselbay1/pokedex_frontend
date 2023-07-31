@@ -78,3 +78,7 @@ button:focus-visible {
         background-color: #f9f9f9;
     }
 }
+
+.main-nav a.active {
+    @apply bg-gray-900 text-white;
+}
