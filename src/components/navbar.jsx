@@ -1,5 +1,5 @@
 import { Disclosure } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, NavLink } from 'react-router-dom';
 import Player from './audioPlayer';
 import pokeSound from '../assets/audio/gotta-catch-em-all.mp3';
