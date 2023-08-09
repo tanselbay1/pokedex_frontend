@@ -1,8 +1,8 @@
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, NavLink } from 'react-router-dom';
-import Player from "./audioPlayer";
-import pokeSound from "../assets/audio/gotta-catch-em-all.mp3";
+import Player from './audioPlayer';
+import pokeSound from '../assets/audio/gotta-catch-em-all.mp3';
 
 const navigation = [
     { name: 'Pokedex', href: '/' },
@@ -60,21 +60,7 @@ export default function Navbar() {
                                 </div>
                             </div>
                             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                            <Player url={pokeSound}/>
-                                
-                                    {/* <span className="sr-only">
-                                        View notifications
-                                    </span> */}
-
-
-                                    {/* <BellIcon
-                                        className="h-6 w-6"
-                                        aria-hidden="true"
-                                    /> */}
-                                    {/* </Player> */}
-                                    
-                                
-                           {/* </Player> */}
+                                <Player url={pokeSound} />
                             </div>
                         </div>
                     </div>
