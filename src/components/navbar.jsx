@@ -3,6 +3,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, NavLink } from 'react-router-dom';
 import Player from './audioPlayer';
 import pokeSound from '../assets/audio/gotta-catch-em-all.mp3';
+import logo from '../assets/images/logo.webp';
 
 const navigation = [
     { name: 'Pokedex', href: '/' },
@@ -43,7 +44,7 @@ export default function Navbar() {
                                     <Link to="/">
                                         <img
                                             className="h-10 w-auto"
-                                            src="https://cdn2.vectorstock.com/i/1000x1000/73/91/pokemon-logo-icon-template-vector-23237391.jpg"
+                                            src={logo}
                                             alt="Your Company"
                                         />
                                     </Link>
