@@ -1,5 +1,5 @@
 import { usePokemon } from '../context/pokemonContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Pokedex() {
     const pokemons = usePokemon();
@@ -7,23 +7,35 @@ export default function Pokedex() {
     const [imageUrl, setImageUrl] = useState(
         'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/200.png',
     );
+    let [isError, setIsError] = useState(false);
 
     let handleChange = ({ target }) => {
         setTypedName(target.value);
+        setIsError(false);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(pokemons[0].name);
-        console.log(typedName);
-        console.log(pokemons[0]);
+
         pokemons.map((pokemon) => {
-            // console.log(pokemon.name + ' ' + typedName);
-            if (pokemon.name == typedName) {
-                setImageUrl(() => pokemon.imageUrl);
+            if (pokemon.name.toLowerCase() === typedName.toLowerCase()) {
+                setImageUrl(pokemon.imageUrl);
             }
         });
+
+        //Search for pokemon data and return an error if "typedName" is not matching any of the pokemons.
+        setIsError(
+            !pokemons.some(
+                (pokemon) =>
+                    pokemon.name.toLowerCase() === typedName.toLowerCase(),
+            ),
+        );
     };
+
+    // useEffect(() => {
+    //     setTypedName('');
+    //     setIsError(false);
+    // }, [imageUrl]);
     return (
         <div className="bg-red-500 w-full p-4 space-y-4 rounded-lg max-w-md">
             <div
@@ -43,7 +55,11 @@ export default function Pokedex() {
                     Search
                 </button>
             </form>
-            <p className="bg-white text-red-700 font-bold px-2 py-1">Error</p>
+            {isError && (
+                <p className="bg-white text-red-700 font-bold px-2 py-1">
+                    {`There is no pokemon on the list as named: ${typedName}`}
+                </p>
+            )}
         </div>
     );
 }
