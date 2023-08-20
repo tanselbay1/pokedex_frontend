@@ -1,11 +1,11 @@
 import { usePokemon } from '../context/pokemonContext';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Pokedex() {
     const pokemons = usePokemon();
     const [typedName, setTypedName] = useState('');
     const [imageUrl, setImageUrl] = useState(
-        'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/200.png',
+        'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/150.png',
     );
     let [isError, setIsError] = useState(false);
 
@@ -32,19 +32,18 @@ export default function Pokedex() {
         );
     };
 
-    // useEffect(() => {
-    //     setTypedName('');
-    //     setIsError(false);
-    // }, [imageUrl]);
     return (
         <div className="bg-red-500 w-full p-4 space-y-4 rounded-lg max-w-md">
             <div
-                className={`aspect-square max-w-[150px] sm:max-w-[200px] mx-auto bg-cover bg-[url('${imageUrl}')]`}
-            ></div>
+                className={`aspect-square max-w-[150px] sm:max-w-[200px] mx-auto`}
+            >
+                <img src={imageUrl} alt="" className="w-full h-full" />
+            </div>
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <input
                     className="text-black px-2 py-1"
                     type="text"
+                    placeholder="Please enter a pokemon name"
                     value={typedName}
                     onChange={handleChange}
                 />
