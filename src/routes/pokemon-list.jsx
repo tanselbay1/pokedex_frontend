@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { usePokemon } from '../context/pokemonContext';
 
 const POKEMON_TYPE_COLORS = {
     normal: '#a8a77a',
@@ -22,13 +22,7 @@ const POKEMON_TYPE_COLORS = {
 };
 
 function Pokemon() {
-    const [pokemon, setPokemon] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:5121/Pokemon')
-            .then((res) => res.json())
-            .then((data) => setPokemon(data));
-    }, []);
+    const pokemon = usePokemon();
 
     return (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">

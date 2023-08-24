@@ -5,6 +5,7 @@ import Layout from './layouts/layout';
 import Pokemon from './routes/pokemon-list';
 import Home from './routes/home';
 import './index.css';
+import { PokemonContextProvider } from './context/pokemonContext';
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <PokemonContextProvider>
+            <RouterProvider router={router} />
+        </PokemonContextProvider>
     </React.StrictMode>,
 );
