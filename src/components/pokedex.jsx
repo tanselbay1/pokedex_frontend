@@ -7,9 +7,9 @@ export default function Pokedex() {
     const [imageUrl, setImageUrl] = useState(
         'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/150.png',
     );
-    let [isError, setIsError] = useState(false);
+    const [isError, setIsError] = useState(false);
 
-    let handleChange = ({ target }) => {
+    const handleChange = ({ target }) => {
         setTypedName(target.value);
         setIsError(false);
     };
@@ -17,19 +17,12 @@ export default function Pokedex() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        pokemons.map((pokemon) => {
-            if (pokemon.name.toLowerCase() === typedName.toLowerCase()) {
-                setImageUrl(pokemon.imageUrl);
-            }
+        //Search for pokemon data, change pokedex image and return an error if "typedName" is not matching any of the pokemons.
+        const foundPokemon = pokemons.find((pokemon) => {
+            return pokemon.name.toLowerCase() === typedName.toLowerCase();
         });
-
-        //Search for pokemon data and return an error if "typedName" is not matching any of the pokemons.
-        setIsError(
-            !pokemons.some(
-                (pokemon) =>
-                    pokemon.name.toLowerCase() === typedName.toLowerCase(),
-            ),
-        );
+        foundPokemon && setImageUrl(foundPokemon.imageUrl);
+        setIsError(!foundPokemon);
     };
 
     return (
@@ -56,7 +49,7 @@ export default function Pokedex() {
             </form>
             {isError && (
                 <p className="bg-white text-red-700 font-bold px-2 py-1">
-                    {`There is no pokemon on the list as named: ${typedName}`}
+                    There is no pokemon on the list as named: {typedName}
                 </p>
             )}
         </div>
